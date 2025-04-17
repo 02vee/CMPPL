@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Vehicles</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Track Vehicles</h1>
+        <nav>
+            <ul>
+                <li><a href="admin-dashboard.html">Home</a></li>
+                <li><a href="admin-docs.html">Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="track-form">
+            <label for="vehicle-number">Enter Vehicle Number:</label>
+            <input type="text" id="vehicle-number" name="vehicle-number" required>
+            <button type="submit">Track</button>
+        </form>
+        <ul id="tracked-vehicles"></ul>
+    </main>
+</body>
+</html>
