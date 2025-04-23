@@ -4,7 +4,8 @@
   "description": "Backend for CMPPL web application",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "cp -r ../frontend/build ./build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,3 +18,4 @@
     "path": "^0.12.7"
   }
 }
+

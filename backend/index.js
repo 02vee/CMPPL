@@ -1,26 +1,13 @@
 const path = require('path');
 const express = require('express');
-const app = require('./app'); // Assuming 'app' is where your backend routes are defined
+const app = require('./app'); // Your backend app
 
 const PORT = process.env.PORT || 5000;
 
-// Serve static files (CSS, JS, and HTML) from the 'build' folder
+// Serve the frontend's static files
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Serve specific HTML files for routes
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'admin.html'));
-});
-
-app.get('/documents', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'documents.html'));
-});
-
-app.get('/transporter', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'transporter.html'));
-});
-
-// Serve index.html for the root route or other undefined routes
+// Fallback route for React Router
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
