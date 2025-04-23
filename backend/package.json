@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "cp -r ../frontend/build ./build"
+    "postinstall": "cd ../frontend && npm install && npm run build || echo 'Frontend build failed' && cd ../backend && cp -r ../frontend/build ./build || echo 'Copy build failed'"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
