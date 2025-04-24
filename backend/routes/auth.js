@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 const adminUsername = 'admin';
-const adminPassword = bcrypt.hashSync('admin123', 10);  // Hashed password
+const adminPassword = bcrypt.hashSync('admin123', 10);
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
