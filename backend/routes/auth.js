@@ -9,7 +9,8 @@ router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   if (username === adminUsername && bcrypt.compareSync(password, adminPassword)) {
-    req.session.isAuthenticated = true;
+    req.session.isAuthenticated = true; // Set session
+    res.cookie('isAuthenticated', true, { httpOnly: true }); // Set cookie for client
     res.json({ message: 'Login successful' });
   } else {
     res.status(401).json({ message: 'Invalid credentials' });

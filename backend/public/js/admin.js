@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Check if the user is authenticated
     fetch('http://localhost:5000/api/auth/check-session', { method: 'GET', credentials: 'include' })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Session check failed');
+            return response.json();
+        })
         .then(data => {
             if (!data.isAuthenticated) {
-                window.location.href = '/login.html'; // Redirect to login page if not authenticated
+                alert('Session expired. Redirecting to login.');
+                window.location.href = '/login.html';
             }
         })
-        .catch(() => {
-            window.location.href = '/login.html'; // Redirect if error in checking session
+        .catch(err => {
+            console.error('Error checking session:', err);
+            window.location.href = '/login.html'; // Redirect on error
         });
 
     // Logout functionality
     function logout() {
         fetch('http://localhost:5000/api/auth/logout', { method: 'GET', credentials: 'include' })
-            .then(response => window.location.href = '/login.html');
+            .then(() => window.location.href = '/login.html');
     }
 
     // Attach logout function to the logout link
