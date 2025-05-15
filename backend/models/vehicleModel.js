@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const vehicleSchema = new mongoose.Schema({
   vehicleId: { 
     type: String, 
@@ -5,8 +7,8 @@ const vehicleSchema = new mongoose.Schema({
     unique: true 
   },
   location: {
-    lat: { type: Number, required: true },
-    lng: { type: Number, required: true },
+    lat: { type: Number, required: true },  // Latitude
+    lng: { type: Number, required: true },  // Longitude
   },
   tracking: {
     type: Boolean,
@@ -16,7 +18,7 @@ const vehicleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-}, { timestamps: true });
+});
 
 const Vehicle = mongoose.model('Vehicle', vehicleSchema);
 
